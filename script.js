@@ -1,71 +1,69 @@
 document.addEventListener("DOMContentLoaded", () => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Login User
+    // Show Registration Form
+    document.getElementById('showRegister')?.addEventListener('click', () => {
+        document.getElementById('loginSection').classList.add('hidden');
+        document.getElementById('registerSection').classList.remove('hidden');
+    });
+
+    // Show Login Form
+    document.getElementById('showLogin')?.addEventListener('click', () => {
+        document.getElementById('registerSection').classList.add('hidden');
+        document.getElementById('loginSection').classList.remove('hidden');
+    });
+
+    // Handle Registration
+    document.getElementById('registerForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('regUsername').value;
+        const email = document.getElementById('regEmail').value;
+        const password = document.getElementById('regPassword').value;
+
+        const newUser = { username, email, password };
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        alert("Registration Successful!");
+        document.getElementById('registerForm').reset();
+        document.getElementById('showLogin').click();
+    });
+
+    // Handle Login
     document.getElementById('loginForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
 
-        const user = users.find(u => u.username === username && u.password === password);
+        const user = users.find(user => user.username === username && user.password === password);
+
         if (user) {
-            window.location.href = "home.html";
             localStorage.setItem('currentUser', JSON.stringify(user));
+            window.location.href = "home.html";
         } else {
-            alert('Invalid username or password');
+            alert("Invalid Username or Password");
         }
     });
 
-    // Logout functionality
+    // Display Welcome Message in Home
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        document.getElementById('welcomeUser').textContent = currentUser.username;
+    }
+
+    // Logout
     document.getElementById('logoutBtn')?.addEventListener('click', () => {
-        alert('You have been logged out!');
+        localStorage.removeItem('currentUser');
         window.location.href = "index.html";
     });
 
-    // My Books Page - Remove Book
-    if (document.querySelector('.remove-book')) {
-        const removeButtons = document.querySelectorAll('.remove-book');
-        removeButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.target.closest('.book-card').remove();
-                alert('Book removed from your collection!');
-            });
-        });
-    }
-
-    // Browse Page - Add Book to My Books
-    if (document.querySelector('.add-to-library')) {
-        const addButtons = document.querySelectorAll('.add-to-library');
-        addButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const bookCard = e.target.closest('.book-card');
-                const bookTitle = bookCard.querySelector('h3').innerText;
-                const bookAuthor = bookCard.querySelector('p').innerText;
-
-                const myBooksSection = document.querySelector('.book-collection');
-                const newBookCard = document.createElement('div');
-                newBookCard.classList.add('book-card');
-                newBookCard.innerHTML = `
-                    <h3>${bookTitle}</h3>
-                    <p>${bookAuthor}</p>
-                    <button class="remove-book">Remove</button>
-                `;
-                myBooksSection.appendChild(newBookCard);
-
-                // Add functionality to the new "Remove" button
-                newBookCard.querySelector('.remove-book').addEventListener('click', () => {
-                    newBookCard.remove();
-                    alert('Book removed from your collection!');
-                });
-
-                alert('Book added to your collection!');
-            });
+    // Add Book to My Books
+    const bookCards = document.querySelectorAll('.add-to-library');
+    bookCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const bookTitle = card.previousElementSibling.previousElementSibling.textContent;
+            alert(`${bookTitle} has been added to your library!`);
+            // Here you can implement the logic to add the book to the user's collection
         });
     });
-
-    // Display current user in home page
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && document.getElementById('welcomeUser')) {
-        document.getElementById('welcomeUser').innerText = currentUser.username;
-    }
 });

@@ -1,0 +1,173 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #FAF9F6; /* light cream */
+
+    margin: 0;
+    padding: 0;
+    color: #2C2C2C; /* dark gray */
+}
+
+header {
+    background-color: #E3F4F4; /* soft teal */
+    padding: 20px;
+    color: #2C2C2C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    font-size: 18px;
+    font-weight: 500;   
+}
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #3A506B; /* rich navy */
+}
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 8px;
+}
+
+.search-bar button {
+    background-color: #FFA500; /* muted orange */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+.reading-challenge,
+.currently-reading,
+.recommendations {
+    margin: 30px auto;
+    background-color: white;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    animation: fadeIn 1s ease-in;
+    position: relative;
+}
+.reading-challenge::before,
+.currently-reading::before,
+.recommendations::before {
+    content: "";
+    background-image: url('path-to-doodle.gif'); /* Add a fun doodle or gif */
+    background-size: 40px 40px;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+}
+
+
+h1, h2 {
+    color: #3A506B;
+    margin-bottom: 20px;
+}
+
+.auth-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.auth-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    width: 320px;
+}
+
+.hidden {
+    display: none;
+}
+h2 {
+    color: #DBB3D1; /* Light purple pastel for headings */
+    margin-bottom: 10px;
+}
+form input {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+button {
+    background-color: #5BC0BE; /* calming blue-green */
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #3A9A9E; /* darker blue-green */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+}
+
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.book-card {
+    background: #ffffff;
+    padding: 20px;
+    width: 180px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;  
+    background-color:#E3F4F4; /* soft teal */
+    color:#3A506B; /* rich navy */
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 -4px 6px rgba(0,0,0,0.05);    
+    }
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

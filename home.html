@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookReads - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">BookReads</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search books" id="searchBar">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-links">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="mybooks.html" class="nav-link">My Books</a>
+                <a href="browse.html" class="nav-link">Browse</a>
+                <a href="index.html" id="logoutBtn">Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="welcome-message">
+            <h1>Welcome, <span id="welcomeUser"></span>!</h1>
+        </div>
+        <div class="reading-challenge">
+            <h2>Your 2024 Reading Challenge</h2>
+            <div class="challenge-progress">
+                <div class="progress-bar">
+                    <div class="progress" style="width: 50%;"></div>
+                </div>
+                <p>You've read 10 out of 20 books.</p>
+            </div>
+        </div>
+        <div class="currently-reading">
+            <h2>Currently Reading</h2>
+            <div class="book-carousel">
+                <p>Book 1: The Great Gatsby</p>
+                <p>Book 2: To Kill a Mockingbird</p>
+            </div>
+        </div>
+        <div class="recommendations">
+            <h2>Recommended for You</h2>
+            <div class="book-grid">
+                <p>Book A: 1984 by George Orwell</p>
+                <p>Book B: Pride and Prejudice by Jane Austen</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 BookReads. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
